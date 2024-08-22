@@ -1,0 +1,50 @@
+{
+  "name": "h5-base",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build-gzip": "vite build --mode gzip",
+    "build-analyze": "vite build --mode analyzer",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "format": "prettier --write src/",
+    "update": "pnpm update",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vant": "^4.9.4",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "amfe-flexible": "^2.2.1",
+    "eslint": "^9.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
+    "postcss-pxtorem": "^6.1.0",
+    "prettier": "^3.3.3",
+    "rollup-plugin-bundle-analyzer": "^1.6.6",
+    "vite": "^5.4.1",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  }
+}

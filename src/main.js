@@ -1,8 +1,11 @@
+import 'amfe-flexible'
+
 import { createApp } from 'vue'
 import App from './App.vue'
-
-import 'amfe-flexible'
+import router from './routes/routes'
 
 import '@/assets/css/reset.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

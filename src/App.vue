@@ -3,8 +3,7 @@
 </script>
 
 <template>
-  
-  <h1 class="test">HELLO WORLD</h1>
+  <router-view />
 </template>
 
 <style>

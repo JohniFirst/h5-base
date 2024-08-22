@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite --host",
     "build": "vite build",
     "build-gzip": "vite build --mode gzip",
     "build-analyze": "vite build --mode analyzer",

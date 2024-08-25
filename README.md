@@ -21,6 +21,11 @@
 ## 路由约定
 views文件夹下，非components文件夹内的vue文件会被自动注册成路由
 
+文件夹名超过一个单词的推荐使用kebab-case命名法，eg. system-config
+
+单文件组件名也推荐使用kebab-case命名法，因为这样在有多个单文件组件的时候，看起来会更直观，但是引用的时候更推荐大驼峰命名法。views列表下有示例文件。
+
+
 地址是相对于views文件夹的位置
 
 name值是vue文件名

@@ -14,19 +14,17 @@ Object.keys(modules).forEach((key) => {
   }
 })
 
-console.log(dynamicRouutes)
-
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/layout/Home.vue'),
+    component: () => import('@/views/components/Home.vue'),
   },
   ...dynamicRouutes,
   {
     path: '/:catchAll(.*)',
     name: '404',
-    component: () => import('@/layout/404.vue'),
+    component: () => import('@/views/components/404.vue'),
   },
 ]
 

@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite --host",
+    "turbo": "turbo run build",
     "build": "vite build",
     "build-gzip": "vite build --mode gzip",
     "build-analyze": "vite build --mode analyzer",
@@ -35,6 +36,7 @@
     "postcss-pxtorem": "^6.1.0",
     "prettier": "^3.3.3",
     "rollup-plugin-bundle-analyzer": "^1.6.6",
+    "turbo": "^2.1.0",
     "vconsole": "^3.15.1",
     "vite": "^5.4.1",
     "vite-plugin-compression": "^0.5.1"

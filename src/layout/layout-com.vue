@@ -1,6 +1,6 @@
 <template>
-    <h1>layout</h1>
-    <router-view />
+  <h1>layout</h1>
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -11,6 +11,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

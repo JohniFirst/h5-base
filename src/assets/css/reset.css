@@ -1,4 +1,4 @@
-html,body,div,span,
+html,body,div,span,a,
 li,ul,ol,h1,h2,h3,h4,h5,h6 {
   margin: 0;
   padding: 0;
@@ -11,4 +11,8 @@ li {
 body {
   word-wrap: break-word;
   word-break: break-all;
+}
+
+a {
+  text-decoration: none;
 }

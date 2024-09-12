@@ -3,6 +3,9 @@ import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { VantResolver } from '@vant/auto-import-resolver';
 import postCssPxToRem from 'postcss-pxtorem'
 import bundleAnalyzer from 'rollup-plugin-bundle-analyzer'
 import viteCompression from 'vite-plugin-compression'
@@ -13,6 +16,12 @@ export default defineConfig((configEnv) => {
 		plugins: [
 			vue(),
 			vueDevTools(),
+      AutoImport({
+        resolvers: [VantResolver()],
+      }),
+      Components({
+        resolvers: [VantResolver()],
+      }),
 			// 开启gzip压缩
 			configEnv.mode === 'gzip'
 				? viteCompression({

@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
+// 默认引入，不要按需引入，尽量优化白屏时间
+import Home from '@/views-default/Home.vue'
+
 const dynamicFiles = import.meta.glob('../views/**/*.vue')
 
 type DynamicFilesType = typeof dynamicFiles
@@ -50,19 +53,25 @@ for (const path in dynamicFiles) {
 	dynamicRoutes.push(route)
 }
 
-console.log(dynamicRoutes)
-
 export default createRouter({
 	history: createWebHistory(),
 	routes: [
 		{
 			path: '/',
-			component: () => import('@/views/Home.vue'),
+			component: Home,
+		},
+		{
+			path: '/login',
+			component: () => import('@/views-default/Login.vue'),
 		},
 		{
 			path: '/dynamic-routes',
 			component: () => import('@/layout/layout-com.vue'),
 			children: dynamicRoutes,
+		},
+		{
+			path: '/:pathMatch(.*)*',
+			component: () => import('@/views-default/404.vue'),
 		},
 	],
 })

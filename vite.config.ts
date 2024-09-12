@@ -16,18 +16,18 @@ export default defineConfig((configEnv) => {
 		plugins: [
 			vue(),
 			vueDevTools(),
-      AutoImport({
-        resolvers: [VantResolver()],
-      }),
-      Components({
-        resolvers: [VantResolver()],
-      }),
+			AutoImport({
+				resolvers: [VantResolver()],
+			}),
+			Components({
+				resolvers: [VantResolver()],
+			}),
 			// 开启gzip压缩
 			configEnv.mode === 'gzip'
 				? viteCompression({
-						// 压缩后删除原文件
-						deleteOriginFile: false,
-					})
+					// 压缩后删除原文件
+					deleteOriginFile: false,
+				})
 				: undefined,
 			configEnv.mode === 'analyzer' ? bundleAnalyzer({}) : undefined,
 		],

@@ -7,7 +7,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-	name: 'layout-com',
+  name: 'LayoutCom',
 })
 </script>
 

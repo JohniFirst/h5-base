@@ -31,7 +31,9 @@ dev: 主测试分支，这个分支的代码是放置到测试服务器的代码
 从dev分支合并到main分支
 
 完整的合并分支操作应该是这样：
-    git branch
+    git branch 查看当前分支，确保从dev分支新建开发分支
+    git checkout -b 你的开发分支 从dev分支新建出一个开发分支
+    ...进行你的开发工作
     git switch dev 切换到dev分支
     git pull 同步最新的dev分支代码
     git switch 你的开发分支
@@ -39,7 +41,7 @@ dev: 主测试分支，这个分支的代码是放置到测试服务器的代码
     git switch dev 切换回dev分支
     git merge 你的开发分支 合并你的开发分支到dev分支
     git push 将测试分支的代码推送到远程仓库
-    测试完成之后
+    ...测试完成之后
     git switch main 切换到main分支
     git merge dev 合并dev分支到main分支
     git push 将main分支的代码推送到远程仓库

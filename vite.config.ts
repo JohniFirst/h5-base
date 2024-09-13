@@ -18,9 +18,11 @@ export default defineConfig((configEnv) => {
 			vueDevTools(),
 			AutoImport({
 				resolvers: [VantResolver()],
+				dts: false,
 			}),
 			Components({
 				resolvers: [VantResolver()],
+				dts: false,
 			}),
 			// 开启gzip压缩
 			configEnv.mode === 'gzip'

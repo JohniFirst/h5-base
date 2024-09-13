@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 
 // 默认引入，不要按需引入，尽量优化白屏时间
-import Home from '@/views-default/Home.vue'
+import Login from '@/views-default/Login.vue'
 
 const dynamicFiles = import.meta.glob('../views/**/*.vue')
 
@@ -58,11 +58,7 @@ export default createRouter({
 	routes: [
 		{
 			path: '/',
-			component: Home,
-		},
-		{
-			path: '/login',
-			component: () => import('@/views-default/Login.vue'),
+			component: Login,
 		},
 		{
 			path: '/dynamic-routes',

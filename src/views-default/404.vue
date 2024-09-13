@@ -1,9 +1,9 @@
 <template>
-    <section class="page-wp">
-        <h2 class="main">404</h2>
-    
-        <p>Page Not Found</p>
-    </section>
+  <section class="page-wp">
+    <h2 class="main">404</h2>
+
+    <p>Page Not Found</p>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -12,10 +12,10 @@
 
 <style scoped>
 .page-wp {
-    text-align: center;
+  text-align: center;
 }
 
 .main {
-    font-size: 80px;
+  font-size: 80px;
 }
 </style>

@@ -21,7 +21,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const loginForm = ref({
+// 注意细节，这里没有类型引入语句，使用更方便
+const loginForm = ref<LoginForm>({
 	username: '',
 	password: '',
 })

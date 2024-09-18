@@ -41,6 +41,7 @@ export default defineConfig((configEnv) => {
       },
     },
     css: {
+      transformer: 'lightningcss',
       postcss: {
         plugins: [
           postCssPxToRem({

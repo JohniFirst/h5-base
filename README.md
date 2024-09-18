@@ -14,6 +14,9 @@
 - [Vite](https://vitejs.dev/) -了解VITE功能。
 # 帮助
 如果你需要帮助，你可以查看[文档](https://docs.marscode.cn/)，或向我们提供[反馈](https://juejin.cn/pin/club/7359094304150650889?utm_source=doc&utm_medium=marscode)。
+
+
+
 # git hooks约定
 - 规范填写commit信息，具体规范可查看[.commitlintrc]
 - 代码提交的时候会自动校验commit信息，不符合规范会报错。
@@ -79,3 +82,6 @@ src/views-default 文件夹下的是默认静态路由，包括导航错误页�
   - main.ts 全局入口文件
   - vite-env.d.ts vite环境变量类型声明文件、同时引入了vant的类型声明文件，开发过程中可以获得完整的类型提示
 - types 类型声明目录，全局声明的类型，文件中如果不包含import语句，全局可以直接使用
+# css约定
+<p>大胆使用最新的css语法来构建你的样式，不要再使用less、scss等预处理器。</p>
+<p>项目启用了lightningcss，可以使css打包更快，体积更小</p>

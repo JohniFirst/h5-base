@@ -4,9 +4,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
-import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from '@vant/auto-import-resolver'
+import NutUIResolver from '@nutui/auto-import-resolver'
 import postCssPxToRem from 'postcss-pxtorem'
 import bundleAnalyzer from 'rollup-plugin-bundle-analyzer'
 import viteCompression from 'vite-plugin-compression'
@@ -18,12 +17,8 @@ export default defineConfig((configEnv) => {
       vue(),
       vueJsx,
       vueDevTools(),
-      AutoImport({
-        resolvers: [VantResolver()],
-        dts: false,
-      }),
       Components({
-        resolvers: [VantResolver()],
+        resolvers: [NutUIResolver()],
         dts: false,
       }),
       // 开启gzip压缩

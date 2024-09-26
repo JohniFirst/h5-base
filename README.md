@@ -15,8 +15,9 @@
 # 帮助
 如果你需要帮助，你可以查看[文档](https://docs.marscode.cn/)，或向我们提供[反馈](https://juejin.cn/pin/club/7359094304150650889?utm_source=doc&utm_medium=marscode)。
 
-
-
+# 技术选型
+Vue3 + Vite + TypeScript + NutUi
+*****不使用vant，因为vant的组件使用很愚蠢
 # git hooks约定
 - 规范填写commit信息，具体规范可查看[.commitlintrc]
 - 代码提交的时候会自动校验commit信息，不符合规范会报错。
@@ -35,7 +36,7 @@
 
 完整的合并分支操作应该是这样：
    -  git branch 查看当前分支，确保从dev分支新建开发分支
-   - git checkout -b 你的开发分支 从dev分支新建出一个开发分支
+   -  git checkout -b 你的开发分支 从dev分支新建出一个开发分支
    -  ...进行你的开发工作
    -  git switch dev 切换到dev分支
    -  git pull 同步最新的dev分支代码

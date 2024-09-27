@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-/// <reference types="vant/es" />
+/// <reference types="@nutui/nutui/dist/types/index" />

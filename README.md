@@ -16,7 +16,7 @@
 如果你需要帮助，你可以查看[文档](https://docs.marscode.cn/)，或向我们提供[反馈](https://juejin.cn/pin/club/7359094304150650889?utm_source=doc&utm_medium=marscode)。
 
 # 技术选型
-Vue3 + Vite + TypeScript + NutUi
+Vue3 + Vite + TypeScript + [NutUi](https://nutui.jd.com/h5/vue/4x/#/zh-CN/component/button)
 *****不使用vant，因为vant的组件使用很愚蠢
 # git hooks约定
 - 规范填写commit信息，具体规范可查看[.commitlintrc]

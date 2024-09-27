@@ -59,6 +59,8 @@ src/views-default 文件夹下的是默认静态路由，包括导航错误页�
 - vue单文件组件命名规则也请使用横杠连接，例如：user-manage.vue，这样在同一文件夹下文件数量多的时候，文件夹可读性更强。
 - 如果想要使用动态参数，请使用中括号连接，例如：user-manage[id].vue，这样在访问时，url为：/user-manage/1，路由参数为：{ id: 1 }
 - src/views 文件夹下的是自动注册的动态路由，该文件夹下的文件会自动注册为路由，文件名即为路由的name，文件内容即为路由的组件。
+- 如果文件名和文件夹名相同，那么路由仅需要输入一次，比如示例文件夹里面native-form.vue的访问路由为/native-form，form-item.vue的访问路由为/native-form/form-item
+- 文件路径中包含components的文件，不会被注册成路由
 # 类型声明文件夹types约定
 - types文件夹下放置项目的类型声明文件，默认使用.d.ts后缀。
 - 请将带有import语句的类型声明到单独的文件夹下，单独进行引入。

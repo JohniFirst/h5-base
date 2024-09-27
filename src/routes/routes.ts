@@ -35,13 +35,11 @@ function createRoute(path: string, dynamicFiles: DynamicFilesType) {
   }
 
   // 创建路由对象
-  const route = {
+  return {
     path: routePath,
     name,
     component: dynamicFiles[path],
   }
-
-  return route
 }
 
 for (const path in dynamicFiles) {
@@ -49,8 +47,7 @@ for (const path in dynamicFiles) {
     continue
   }
 
-  const route = createRoute(path, dynamicFiles)
-  dynamicRoutes.push(route)
+  dynamicRoutes.push(createRoute(path, dynamicFiles))
 }
 
 export default createRouter({

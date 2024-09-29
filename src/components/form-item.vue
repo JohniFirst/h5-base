@@ -1,13 +1,11 @@
 <template>
   <div>
     <label :for="name">{{ label }}:</label>
-    <input type="type" :placeholder="placeholder" />
+    <input :name="name" :type="type" :placeholder="placeholder" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-
 defineProps({
   label: {
     type: String,
@@ -25,10 +23,6 @@ defineProps({
     type: String,
     default: '',
   },
-})
-
-onMounted(() => {
-  console.log('原生表单测试')
 })
 </script>
 

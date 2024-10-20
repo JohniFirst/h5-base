@@ -10,5 +10,3 @@ export default defineComponent({
   name: 'LayoutCom',
 })
 </script>
-
-<style scoped></style>

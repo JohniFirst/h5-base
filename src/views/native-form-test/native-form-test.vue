@@ -25,5 +25,3 @@ const submitTest = (form: object) => {
   console.log('form提交结果：', form)
 }
 </script>
-
-<style scoped></style>

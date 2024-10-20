@@ -6,11 +6,9 @@ import Login from '@/views-default/Login.vue'
 
 const dynamicFiles = import.meta.glob('../views/**/*.vue')
 
-type DynamicFilesType = typeof dynamicFiles
-
 const dynamicRoutes: RouteRecordRaw[] = []
 
-function createRoute(path: string, dynamicFiles: DynamicFilesType) {
+function createRoute(path: string) {
   // 移除路径中的 'views' 和 '.vue'，并将路径转换为小写
   let routePath = path.replace(/(\.\.\/views|\.vue)/g, '').toLowerCase()
 
@@ -47,7 +45,7 @@ for (const path in dynamicFiles) {
     continue
   }
 
-  dynamicRoutes.push(createRoute(path, dynamicFiles))
+  dynamicRoutes.push(createRoute(path))
 }
 
 export default createRouter({

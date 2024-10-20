@@ -45,9 +45,6 @@ importers:
       '@rushstack/eslint-patch':
         specifier: ^1.10.4
         version: 1.10.4
-      '@vant/auto-import-resolver':
-        specifier: ^1.2.1
-        version: 1.2.1
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
@@ -816,9 +813,6 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-
-  '@vant/auto-import-resolver@1.2.1':
-    resolution: {integrity: sha512-czGWW4UolNITkF3qQSQlpHDHAsI3/GHVKbRMmEEpry7NWdnU4p5a5jBi0VApbaLa5g80Hy10XVs3IB+UozoSUw==}
 
   '@vitejs/plugin-vue-jsx@4.0.1':
     resolution: {integrity: sha512-7mg9HFGnFHMEwCdB6AY83cVK4A6sCqnrjFYF4WIlebYAQVVJ/sC/CiTruVdrRlhrFoeZ8rlMxY9wYpPTIRhhAg==}
@@ -3219,8 +3213,6 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
-
-  '@vant/auto-import-resolver@1.2.1': {}
 
   '@vitejs/plugin-vue-jsx@4.0.1(vite@5.4.9(@types/node@22.7.7)(lightningcss@1.27.0)(sass@1.80.3)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))':
     dependencies:

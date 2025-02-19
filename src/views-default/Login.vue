@@ -1,5 +1,6 @@
 <template>
   <h1>Login</h1>
+  <h2 v-permission="['test1']">权限测试</h2>
 
   <nut-form ref="formRef" :model-value="loginForm" label-position="top">
     <nut-form-item label="用户名">

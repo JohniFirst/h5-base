@@ -1,0 +1,21 @@
+body {
+  /* 强制英文换行 */
+  word-break: break-all;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+ol,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+

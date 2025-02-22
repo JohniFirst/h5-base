@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './routes/routes'
 
 import '@/assets/css/app.css'
+import '@nutui/nutui/dist/packages/notify/index.css'
 
 // 引入自定义指令
 import permission from './directives/permission'

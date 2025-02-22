@@ -4,8 +4,11 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
+// nutui按需引入配置开始
 import Components from 'unplugin-vue-components/vite'
 import NutUIResolver from '@nutui/auto-import-resolver'
+// nutui按需引入配置结束
+
 import postCssPxToRem from 'postcss-pxtorem'
 import bundleAnalyzer from 'rollup-plugin-bundle-analyzer'
 import viteCompression from 'vite-plugin-compression'

@@ -17,6 +17,7 @@
 		"prepare": "husky"
 	},
 	"dependencies": {
+		"@ethereumjs/tx": "^5.4.0",
 		"@nutui/nutui": "^4.3.13",
 		"axios": "^1.7.9",
 		"bigjs": "^0.0.3",

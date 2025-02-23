@@ -2,11 +2,10 @@
   <div>
     <h1>web3示例页面</h1>
     <nut-button type="primary" @click="createAccount">创建账号</nut-button>
-    <nut-button type="primary" @click="usePrivateKey(accountInfo.privateKey)">账号登录</nut-button>
+    <nut-button type="primary" @click="usePrivateKey(web3Store.privateKey)">账号登录</nut-button>
     <nut-button type="primary" @click="getAccountBalance">获取余额</nut-button>
 
-    <p>私钥：{{ accountInfo.privateKey }}</p>
-    <p>地址：{{ accountInfo.address }}</p>
+    <p>地址：{{ web3Store.address }}</p>
     <p>余额：{{ accountInfo.balance }} ETH</p>
 
     <nut-input v-model="target.address" placeholder="请输入地址"></nut-input>
@@ -20,10 +19,11 @@
 import { reactive } from 'vue'
 import Web3 from 'web3'
 import { showNotify } from '@nutui/nutui'
+import { useWeb3Store } from '@/store/store'
+
+const web3Store = useWeb3Store()
 
 const accountInfo = reactive({
-  privateKey: '0x189f4af93192b1caead1b2b031739c544cd475827f966287a91ecfd57e24f42e',
-  address: '',
   balance: '0',
 })
 const target = reactive({
@@ -36,8 +36,7 @@ const web3 = new Web3(Web3.givenProvider || import.meta.env.VITE_WEB3_ENDPOINTS)
 const createAccount = () => {
   const account = web3.eth.accounts.create()
 
-  accountInfo.privateKey = account.privateKey
-  accountInfo.address = account.address
+  web3Store.setUserInfo(account.address, account.privateKey)
 }
 
 // 使用现有privatekey登录
@@ -45,17 +44,14 @@ const usePrivateKey = (privateKey: string) => {
   const loginResult = web3.eth.accounts.privateKeyToAccount(privateKey)
 
   if (loginResult && loginResult.address) {
-    accountInfo.address = loginResult.address
+    web3Store.setAddress(loginResult.address)
     showNotify.text('登录成功')
   }
 }
 
 // 获取余额
 const getAccountBalance = async () => {
-  if (!accountInfo.address) {
-    usePrivateKey(accountInfo.privateKey)
-  }
-  const balance = await web3.eth.getBalance(accountInfo.address)
+  const balance = await web3.eth.getBalance(web3Store.address)
   accountInfo.balance = web3.utils.fromWei(balance, 'ether')
 }
 

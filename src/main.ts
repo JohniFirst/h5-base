@@ -9,8 +9,12 @@ import '@nutui/nutui/dist/packages/notify/index.css'
 
 // 引入自定义指令
 import permission from './directives/permission'
+import { createPinia } from 'pinia'
 
+const pinia = createPinia()
 const app = createApp(App)
+
+app.use(pinia)
 
 app.use(router).mount('#app')
 

@@ -2,7 +2,7 @@
   <h1>Login</h1>
   <h2 v-permission="['test1']">权限测试</h2>
 
-  <router-link to="/web3/web3-eg">web3示例页面</router-link>
+  <router-link to="/web3">web3示例页面</router-link>
 
   <nut-form ref="formRef" :model-value="loginForm" label-position="top">
     <nut-form-item label="用户名">

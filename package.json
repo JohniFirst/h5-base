@@ -18,6 +18,7 @@
 	},
 	"dependencies": {
 		"@ethereumjs/tx": "^5.4.0",
+		"@ethereumjs/wallet": "^2.0.4",
 		"@nutui/nutui": "^4.3.13",
 		"axios": "^1.8.0",
 		"bigjs": "^0.0.3",

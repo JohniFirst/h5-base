@@ -7,6 +7,8 @@ export const useWeb3Store = defineStore('web3Store', {
     address: '',
     // 私钥
     privateKey: import.meta.env.VITE_WEB3_PRIVATEKEY,
+    // 助记词
+    mnemonic: 'concert opera lizard pink silly potato answer fork total trip matrix west',
   }),
   actions: {
     setAddress(address: string) {
@@ -18,6 +20,9 @@ export const useWeb3Store = defineStore('web3Store', {
     setUserInfo(address: string, privateKey: string) {
       this.address = address
       this.privateKey = privateKey
+    },
+    setMnemonic(mnemonic: string) {
+      this.mnemonic = mnemonic
     },
   },
 })

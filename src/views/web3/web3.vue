@@ -4,10 +4,12 @@
     <nut-button type="primary" @click="createAccount">创建账号</nut-button>
     <nut-button type="primary" @click="usePrivateKey(web3Store.privateKey)">账号登录</nut-button>
     <nut-button type="primary" @click="getAccountBalance">获取余额</nut-button>
+    <nut-button type="primary" @click="createMnemonic">使用助记词的方式创建账号</nut-button>
+    <nut-button type="primary" @click="generateKeyPair">根据助记词创建密钥对</nut-button>
 
     <p>地址：{{ web3Store.address }}</p>
     <p>余额：{{ accountInfo.balance }} ETH</p>
-    <p>助记词：{{ accountInfo.mnemonic }}</p>
+    <p>助记词：{{ web3Store.mnemonic }}</p>
 
     <nut-input v-model="target.address" placeholder="请输入地址"></nut-input>
     <nut-input v-model="target.targetEth" placeholder="请输入转账金额"></nut-input>
@@ -21,13 +23,13 @@ import { reactive } from 'vue'
 import Web3 from 'web3'
 import { showNotify } from '@nutui/nutui'
 import { useWeb3Store } from '@/store/store'
-import { generateMnemonic } from 'bip39'
+import { generateMnemonic, mnemonicToSeed } from 'bip39'
+import { hdkey } from '@ethereumjs/wallet'
 
 const web3Store = useWeb3Store()
 
 const accountInfo = reactive({
   balance: '0',
-  mnemonic: '',
 })
 const target = reactive({
   address: '',
@@ -42,6 +44,47 @@ const createAccount = () => {
   web3Store.setUserInfo(account.address, account.privateKey)
 }
 
+// 创建助记词，相当于是另外一种方式创建钱包
+const createMnemonic = () => {
+  const mnemonic = generateMnemonic()
+
+  web3Store.setMnemonic(mnemonic)
+}
+
+// 根据助记词创建密钥对
+const generateKeyPair = async () => {
+  const seed = await mnemonicToSeed(web3Store.mnemonic)
+
+  const hdWallet = hdkey.EthereumHDKey.fromMasterSeed(seed)
+
+  const keypair = hdWallet.derivePath("m/44'/60'/0'/0/0")
+
+  // 获取钱包
+  const wallet = keypair.getWallet()
+
+  // // 获取钱包地址
+  // const lowerCaseAddress = wallet.getAddressString()
+
+  // // 获取钱包的校验地址（部分大写）
+  // const checkedAddress = wallet.getChecksumAddressString()
+
+  // 获取私钥
+  const privateKey = wallet.getPrivateKeyString()
+
+  console.log('获取私钥', privateKey)
+
+  // 导出keyStore
+  // 1. 使用web3.js
+  web3.eth.accounts.encrypt(privateKey, '11111111').then((keyStore) => {
+    console.log('keyStore', JSON.stringify(keyStore))
+  })
+
+  // 2. 使用wallet对象
+  wallet.toV3('11111111').then((keyStore2) => {
+    console.log('keyStore2', JSON.stringify(keyStore2))
+  })
+}
+
 // 使用现有privatekey登录
 const usePrivateKey = (privateKey: string) => {
   const loginResult = web3.eth.accounts.privateKeyToAccount(privateKey)
@@ -49,16 +92,7 @@ const usePrivateKey = (privateKey: string) => {
   if (loginResult && loginResult.address) {
     web3Store.setAddress(loginResult.address)
     showNotify.text('登录成功')
-    createMnemonic()
   }
-}
-
-// 创建助记词
-const createMnemonic = () => {
-  const mnemonic = generateMnemonic()
-
-  console.log(mnemonic)
-  accountInfo.mnemonic = mnemonic
 }
 
 // 获取余额

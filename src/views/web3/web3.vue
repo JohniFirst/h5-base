@@ -56,26 +56,50 @@ const getAccountBalance = async () => {
 }
 
 const startTransaction = async () => {
-  // 获取转账次数
-  // const nonce = await web3.eth.getTransactionCount(accountInfo.address)
+  try {
+    // 从私钥获取发送者的账户
+    const senderAccount = web3.eth.accounts.privateKeyToAccount(web3Store.privateKey)
+    web3.eth.accounts.wallet.add(senderAccount)
 
-  // 获取转账的gas价格
-  const gasPrice = await web3.eth.getGasPrice()
-  console.log('gasPrice', gasPrice)
+    // 获取当前的gas价格
+    const gasPrice = await web3.eth.getGasPrice()
 
-  // 转账金额
-  // const value = web3.utils.toWei(target.targetEth, 'ether')
+    // 估算转账所需的gas用量
+    const gasEstimate = await web3.eth.estimateGas({
+      from: senderAccount.address,
+      to: target.address,
+      value: web3.utils.toWei(target.targetEth, 'ether'),
+    })
 
-  // 构建转账参数
-  // const rawTx = {
-  //   from: accountInfo.address,
-  //   to: target.address,
-  //   value,
-  //   nonce,
-  //   gasPrice,
-  //   data: '0x0000',
-  // }
+    // 构建交易对象
+    const txObject = {
+      from: senderAccount.address,
+      to: target.address,
+      value: web3.utils.toWei(target.targetEth, 'ether'),
+      gas: gasEstimate,
+      gasPrice,
+    }
+
+    // 签署交易
+    const signedTx = await senderAccount.signTransaction(txObject)
+
+    // 发送已签署的结果
+    const receipt = web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+
+    // 交易结果
+    receipt.on('transactionHash', (txId) => {
+      console.log('交易id', txId)
+    })
+
+    receipt.on('receipt', (res) => {
+      console.log('第一个节点确认', res)
+    })
+
+    receipt.on('confirmation', (confirmation) => {
+      console.log('第n个节点确认', confirmation)
+    })
+  } catch (error) {
+    throw new Error(error as string)
+  }
 }
 </script>
-
-<style lang="less" scoped></style>

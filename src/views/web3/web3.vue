@@ -7,6 +7,7 @@
 
     <p>地址：{{ web3Store.address }}</p>
     <p>余额：{{ accountInfo.balance }} ETH</p>
+    <p>助记词：{{ accountInfo.mnemonic }}</p>
 
     <nut-input v-model="target.address" placeholder="请输入地址"></nut-input>
     <nut-input v-model="target.targetEth" placeholder="请输入转账金额"></nut-input>
@@ -20,11 +21,13 @@ import { reactive } from 'vue'
 import Web3 from 'web3'
 import { showNotify } from '@nutui/nutui'
 import { useWeb3Store } from '@/store/store'
+import { generateMnemonic } from 'bip39'
 
 const web3Store = useWeb3Store()
 
 const accountInfo = reactive({
   balance: '0',
+  mnemonic: '',
 })
 const target = reactive({
   address: '',
@@ -46,7 +49,16 @@ const usePrivateKey = (privateKey: string) => {
   if (loginResult && loginResult.address) {
     web3Store.setAddress(loginResult.address)
     showNotify.text('登录成功')
+    createMnemonic()
   }
+}
+
+// 创建助记词
+const createMnemonic = () => {
+  const mnemonic = generateMnemonic()
+
+  console.log(mnemonic)
+  accountInfo.mnemonic = mnemonic
 }
 
 // 获取余额

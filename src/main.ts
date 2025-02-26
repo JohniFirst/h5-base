@@ -11,6 +11,12 @@ import '@nutui/nutui/dist/packages/notify/index.css'
 import permission from './directives/permission'
 import { createPinia } from 'pinia'
 
+import { Buffer } from 'buffer'
+
+if (typeof window.Buffer === 'undefined') {
+  window.Buffer = Buffer
+}
+
 const pinia = createPinia()
 const app = createApp(App)
 

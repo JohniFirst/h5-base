@@ -21,6 +21,7 @@
 		"@nutui/nutui": "^4.3.13",
 		"axios": "^1.8.0",
 		"bigjs": "^0.0.3",
+		"bip39": "^3.1.0",
 		"date-fns": "^3.6.0",
 		"echarts": "^5.6.0",
 		"localforage": "^1.10.0",

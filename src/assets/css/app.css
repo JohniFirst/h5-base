@@ -1,6 +1,8 @@
 body {
   /* 强制英文换行 */
   word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 p,

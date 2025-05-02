@@ -6,7 +6,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // nutui按需引入配置开始
 import Components from 'unplugin-vue-components/vite'
-import NutUIResolver from '@nutui/auto-import-resolver'
+import AutoImport from 'unplugin-auto-import/vite'
+import { VantResolver } from '@vant/auto-import-resolver'
 // nutui按需引入配置结束
 
 import postCssPxToRem from 'postcss-pxtorem'
@@ -20,8 +21,12 @@ export default defineConfig((configEnv) => {
       vue(),
       vueJsx,
       vueDevTools(),
+      AutoImport({
+        resolvers: [VantResolver()],
+        dts: false,
+      }),
       Components({
-        resolvers: [NutUIResolver()],
+        resolvers: [VantResolver()],
         dts: false,
       }),
       // 开启gzip压缩
